@@ -4,7 +4,5 @@ def islower(c):
     for lower in c:
         if ord(lower) >= 97 and ord(lower) <= 122:
             return True
-        if ord(lower) == " ":
-            return True
         else:
             return False
