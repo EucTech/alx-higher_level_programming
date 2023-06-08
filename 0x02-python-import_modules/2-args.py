@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
+if __name__  == "__main__":
 length = len(sys.argv)-1
-count = 0
 if length == 0:
     print("{} arguments.".format(length))
 elif length == 1:
