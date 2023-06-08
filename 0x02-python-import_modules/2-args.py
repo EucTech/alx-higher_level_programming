@@ -3,7 +3,7 @@ import sys
 length = len(sys.argv)-1
 count = 0
 if length == 0:
-        print("0 arguments.")
+    print("0 arguments.")
 elif length == 1:
     print("1 argument:")
     for i in range(1, length):
