@@ -16,12 +16,12 @@ if __name__ == "__main__":
     b = int(sys.argv[3])
 
     if sign == "+":
-        value = a + b
+        value = add(a, b)
     if sign == "-":
-        value = a - b
+        value = sub(a, b)
     if sign == "*":
-        value = a * b
+        value = mul(a, b)
     if sign == "/":
-        value = a / b
+        value = div(a, b)
 
     print(f"{a} {sign} {b} = {value}")
