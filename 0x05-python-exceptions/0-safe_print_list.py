@@ -8,6 +8,6 @@ def safe_print_list(my_list=[], x=0):
             if val == x:
                 break
         print()
-    except (TypeError, ValueError):
+    except IndexError:
         pass
     return val
