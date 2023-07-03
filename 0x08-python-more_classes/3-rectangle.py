@@ -56,3 +56,5 @@ class Rectangle:
         for i in range(self.__height):
             rec_list += "#" * self.__width + "\n"
         return rec_list
+        if self.__width or self.__heigth == 0:
+                return ""
