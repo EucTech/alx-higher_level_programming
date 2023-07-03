@@ -52,9 +52,11 @@ class Rectangle:
         return (self.__width * 2) + (self.__height * 2)
 
     def __str__(self):
-        rec_list = ""
+
+        rec = ""
         for i in range(self.__height):
-            rec_list += "#" * self.__width + "\n"
-        return rec_list
+            rec += "#" * self.__width + "\n"
+        return rec
+
         if self.__width or self.__heigth == 0:
-                return ""
+            return ""
