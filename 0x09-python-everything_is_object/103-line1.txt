@@ -1,1 +1,1 @@
-1 int object is created
+a = 1
