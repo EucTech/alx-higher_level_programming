@@ -1,1 +1,2 @@
-a = 1
+if one object is created = 1
+if no object = 0
