@@ -1,1 +1,1 @@
-a
+One new object is created

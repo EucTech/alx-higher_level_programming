@@ -1,1 +1,1 @@
-b
+No new object is created
