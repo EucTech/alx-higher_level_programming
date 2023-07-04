@@ -1,2 +1,1 @@
-if one object is created = 1
-if no object = 0
+0
