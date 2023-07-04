@@ -1,1 +1,1 @@
-One int object is created
+1 int object is created
