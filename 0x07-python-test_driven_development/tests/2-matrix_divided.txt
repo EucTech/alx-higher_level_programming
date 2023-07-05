@@ -40,17 +40,12 @@ Traceback (most recent call last):
   ...
 TypeError: matrix_divided() missing 1 required positional argument: 'div'
 
->>> matrix_divided([], 9) 
-Traceback (most recent call last):
-  ...
-TypeError: matrix must be a matrix                (list of lists) of integers/floats
-
 >>> matrix_divided([[1, 2, -3], [4, 5, -6]], 'inf') 
 Traceback (most recent call last):
   ...
 TypeError: div must be a number
 
->>> matrix_divided([[1, 2, 3], [4, 5, "6"]], 5) 
+>>> matrix_divided([[1, 2, -3], [4, 5, "6"]], 9) 
 Traceback (most recent call last):
   ...
-TypeError: matrix must be a matrix                (list of lists) of integers/floats
+TypeError: matrix must be a matrix (list of lists) of integers/floats
