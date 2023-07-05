@@ -3,8 +3,16 @@
 
 
 def matrix_divided(matrix, div):
-    """Matrix function"""
-    if not all(isinstance(row, list) for row in matrix):
+    """
+        Matrix function
+
+        Args: matrix / div
+
+    """
+    if matrix == [] or not (isinstance(matrix, list)) or\
+               not all(isinstance(row, list) for row in matrix)\
+               or not all(isinstance(va, (int, float))
+               for row in matrix for va in row):
         raise TypeError("matrix must be a matrix\
                 (list of lists) of integers/floats")
 
