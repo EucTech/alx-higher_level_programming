@@ -1,0 +1,23 @@
+"""This is a doctest that tests the test_indentation code"""
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("I love you bro: what is it that I will give you? Please tell me.") 
+I love you bro:
+
+what is it that I will give you?
+
+Please tell me.
+
+>>> text_indentation()                                                                   
+Traceback (most recent call last):
+  ...
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+>>> text_indentation(8) 
+Traceback (most recent call last):
+  ...
+TypeError: text must be a string
+
+>>> text_indentation("o") 
+o
