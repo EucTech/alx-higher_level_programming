@@ -12,4 +12,4 @@ def text_indentation(text):
         text = text.replace('? ', '?\n\n')
     if ':' in text:
         text = text.replace(': ', ':\n\n')
-    print(text.strip())
+    print(text)
