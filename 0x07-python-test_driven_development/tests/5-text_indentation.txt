@@ -2,12 +2,23 @@
 
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 
->>> text_indentation("I love you bro: what is it that I will give you? Please tell me.") 
-I love you bro:
+>>> text_indentation("Holberton. School? How are you: John")
+Holberton.
 
-what is it that I will give you?
+School?
 
-Please tell me.
+How are you:
+
+John
+
+>>> text_indentation("Holberton. School? How are you:    John") 
+Holberton.
+
+School?
+
+How are you:
+
+John
 
 >>> text_indentation()                                                                   
 Traceback (most recent call last):
