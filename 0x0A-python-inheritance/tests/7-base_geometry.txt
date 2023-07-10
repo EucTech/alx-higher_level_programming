@@ -1,0 +1,67 @@
+"""Doctest thats for test cases of base geometry"""
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+>>> bg = BaseGeometry()
+
+>>> try:
+...     bg.integer_validator("name", )
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] integer_validator() missing 1 required positional argument: 'value'
+
+>>> try:
+...     bg.integer_validator("name", 6)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+
+>>> try:
+...     bg.integer_validator("name", -6)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[ValueError] name must be greater than 0
+
+>>> try:
+...     bg.integer_validator("name", 0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[ValueError] name must be greater than 0
+
+>>> try:
+...     bg.integer_validator("name", float('inf'))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] name must be an integer
+
+>>> try:
+...     bg.integer_validator("name", 5.0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] name must be an integer
+
+>>> try:
+...     bg.integer_validator("name", '5.0')
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] name must be an integer
+
+>>> try:
+...     bg.integer_validator()
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> try:
+...     bg.integer_validator(9)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] integer_validator() missing 1 required positional argument: 'value'
