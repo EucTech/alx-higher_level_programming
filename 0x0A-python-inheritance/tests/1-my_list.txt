@@ -1,0 +1,15 @@
+"""Doctest for a code that print sorted list"""
+
+>>> MyList = __import__('1-my_list').MyList
+
+>>> my_list = MyList([3, 4, 7, 1, 2])
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 7]
+
+>>> my_list = MyList([5, 4, 3, 2, 1]) 
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+>>> my_list = MyList([])              
+>>> my_list.print_sorted()
+[]
