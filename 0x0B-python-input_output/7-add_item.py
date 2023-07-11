@@ -14,6 +14,6 @@ lists = []
 
 lists.extend(arguments)
 
-save_to_json_file(lists, "add_item.json")
+lists = save_to_json_file(lists, "add_item.json")
 
 load_from_json_file("add_item.json")
