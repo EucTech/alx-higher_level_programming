@@ -7,6 +7,7 @@ class MyInt(int):
     def __eq__(self, value):
         """function for equal =="""
         return super().__ne__(value)
+
     def __ne__(self, value):
         """function for not equal !="""
         return super().__eq__(value)
