@@ -2,6 +2,7 @@
 """
     A rectangle class that inherits from base
 """
+import sys
 from models.base import Base
 
 
@@ -84,3 +85,12 @@ class Rectangle(Base):
 
     def area(self):
         return self.__width * self.__height
+
+    def display(self):
+        rec = ""
+        for i in range(self.__height):
+            rec += "#" * self.__width
+            if i != self.__height - 1:
+                rec += "\n"
+        print(rec, file=sys.stdout)
+        return rec
