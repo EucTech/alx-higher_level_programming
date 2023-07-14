@@ -1,9 +1,14 @@
 import unittest
+from models.base import Base
 from models.rectangle import Rectangle
 
 
 class TestRectangle(unittest.TestCase):
-    def test_positive_integers(self):
+
+    def setUp(self):
+        Base._Base__nb_objects = 0
+
+    def test_integers(self):
         r =  Rectangle(10, 2)
         self.assertEqual(r.id, 1)
         r = Rectangle(5, 6, 0, 9, None)
@@ -14,15 +19,111 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r2.id, 12)
         r3 = Rectangle(2, 50, 0, 0, 333333)
         self.assertEqual(r3.id, 333333)
-
-    def test_Empty_and_negative_integer(self):
-        re3 = Rectangle(-10, -3, 0, 0, -12)
-        self.assertEqual(re3.id, -12)
-        re4 = Rectangle(-2, -4, 0, 0, -4444444)
+        re4 = Rectangle(2, 4, 0, 0, -4444444)
         self.assertEqual(re4.id, -4444444)
         re5 = Rectangle(10, 8, 0, 0, 0)
         self.assertEqual(re5.id, 0)
-
-    def test_float_string(self):
         rec = Rectangle(2, 3, 0, 0, 3.4)
         self.assertEqual(rec.id, 3.4)
+        r1 = Rectangle(26, 10)
+        self.assertEqual(r1.id, 4)
+
+    def test_zero_x_y(self):
+        r = Rectangle(7, 9)
+        self.assertEqual(r.x, 0)
+        self.assertEqual(r.y, 0)
+        r = Rectangle(9, 8, 0, 7, 9)
+        self.assertEqual(r.x, 0)
+        r = Rectangle(6, 8, 6, 0, 7)
+        self.assertEqual(r.y, 0)
+    
+    def test_positive_numbers(self):
+        r = Rectangle(5, 8)
+        self.assertEqual(r.width, 5)
+        self.assertEqual(r.height, 8)
+        r1 = Rectangle(4, 6, 9, 4, 9)
+        self.assertEqual(r1.width, 4)
+        self.assertEqual(r1.height, 6)
+        self.assertEqual(r1.x, 9)
+        self.assertEqual(r1.y, 4)
+        self.assertEqual(r1.id, 9)
+
+    def test_typeerror_string(self):
+        with self.assertRaises(TypeError):
+            r = Rectangle(10, "3")
+        with self.assertRaises(TypeError):
+            r1 = Rectangle("3", 10)
+        with self.assertRaises(TypeError):
+            r2 = Rectangle(10, 5, "4", 8, 12)
+        with self.assertRaises(TypeError):
+            r3 = Rectangle(2, 3, 5, "5", 8)
+        with self.assertRaises(TypeError):
+            r4 = Rectangle("4", "5", "9", "7", 3)
+
+    def test_typeerror_float(self):
+        with self.assertRaises(TypeError):
+            r = Rectangle(4.0, 4)
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(4, 4.0)
+        with self.assertRaises(TypeError):
+            r2 = Rectangle(4, 4, 9.0, 9, 3)
+        with self.assertRaises(TypeError):
+            r3 = Rectangle(4, 4, 5, 4.5, 2)
+        with self.assertRaises(TypeError):
+            r4 = Rectangle(4.0, 7.888, 8.9, 7, 0)
+
+    def test_none_float_inf(self):
+        with self.assertRaises(TypeError):
+            r = Rectangle(float('inf'), 4)
+        with self.assertRaises(TypeError):
+            r1 = Rectangle(3, float('inf'))
+        with self.assertRaises(TypeError):
+            r2 = Rectangle(None, 4)
+        with self.assertRaises(TypeError):
+            r = Rectangle(9, None)
+        with self.assertRaises(TypeError):
+            r = Rectangle(5, 4, float('inf'), 4, 8)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, 4, 7, float('inf'), 9)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, 6, None, 6, 9)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, 4, 6, None, 8)
+
+    def test_boolean(self):
+        with self.assertRaises(TypeError):
+            r = Rectangle(True, 4, 6, 5, 8)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, True, 6, 6, 8)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, 4, 6, True, 8)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, 4, True, 63, 8)
+
+    def test_list(self):
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, 4, [6, 7, 8], 63, 8)
+        with self.assertRaises(TypeError):
+            r = Rectangle([7, 8, 0, 9], 4, 6, 63, 8)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, [4, 6, 7], 9, 63, 8)
+        with self.assertRaises(TypeError):
+            r = Rectangle(4, 4, 3, [63, 8, 6], 8)
+
+    def test_zero_value(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(0, 9)
+        with self.assertRaises(ValueError):
+            r = Rectangle(9, 0)
+
+    def test_negative_value(self):
+        with self.assertRaises(ValueError):
+            r = Rectangle(-4, 9)
+        with self.assertRaises(ValueError):
+            r = Rectangle(7, -9)
+        with self.assertRaises(ValueError):
+            r = Rectangle(7, 9, -5)
+        with self.assertRaises(ValueError):
+            r = Rectangle(7, 9, 5, -9)
+        with self.assertRaises(ValueError):
+            r = Rectangle(-17, -29, -3, -9, 0)
