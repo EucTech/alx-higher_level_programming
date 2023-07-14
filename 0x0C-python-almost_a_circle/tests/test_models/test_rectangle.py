@@ -136,3 +136,22 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.area(), 12)
         r2 = Rectangle(2, 10, 0, 0, 12)
         self.assertEqual(r2.area(), 20)
+
+    def test_display(self):
+        d = Rectangle(2, 6)
+        res = '##\n##\n##\n##\n##\n##'
+        self.assertEqual(d.display(), res)
+
+        d = Rectangle(6, 2)
+        res = '######\n######'
+        self.assertEqual(d.display(), res)
+
+        d = Rectangle(2, 2)
+        res = '##\n##'
+        self.assertEqual(d.display(), res)
+
+        d = Rectangle(3, 4, 0, 0, 6)
+        res = '###\n###\n###\n###'
+        self.assertEqual(d.display(), res)
+
+        self.assertEqual(d.display(), res)
