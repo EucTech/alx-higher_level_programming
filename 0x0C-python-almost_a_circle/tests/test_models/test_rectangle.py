@@ -154,4 +154,27 @@ class TestRectangle(unittest.TestCase):
         res = '###\n###\n###\n###'
         self.assertEqual(d.display(), res)
 
-        self.assertEqual(d.display(), res)
+    def test__str(self):
+        d = Rectangle(4, 6, 2, 1, 12)
+        res = '[Rectangle] (12) 2/1 - 4/6'
+        self.assertEqual(d.__str__(), res)
+
+        d = Rectangle(4, 6, 0, 0, 12)
+        res = '[Rectangle] (12) 0/0 - 4/6'
+        self.assertEqual(d.__str__(), res)
+
+        d = Rectangle(6, 4, 2, 1, None)
+        res = '[Rectangle] (1) 2/1 - 6/4'
+        self.assertEqual(d.__str__(), res)
+
+        d = Rectangle(6, 4, 2, 1, 0)
+        res = '[Rectangle] (0) 2/1 - 6/4'
+        self.assertEqual(d.__str__(), res)
+
+        d = Rectangle(6, 4, 0, 2, 6)
+        res = '[Rectangle] (6) 0/2 - 6/4'
+        self.assertEqual(d.__str__(), res)
+
+        d = Rectangle(6, 4, 2)
+        res = '[Rectangle] (2) 2/0 - 6/4'
+        self.assertEqual(d.__str__(), res)
