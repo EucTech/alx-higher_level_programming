@@ -202,7 +202,7 @@ class TestRectangle(unittest.TestCase):
         res = '[Rectangle] (2) 2/0 - 6/4'
         self.assertEqual(d.__str__(), res)
 
-    def test_update(self):
+    def test_args_update(self):
         self.up.update(2)
         res = "[Rectangle] (2) 10/10 - 10/10"
         self.assertEqual(self.up.update(), res)
@@ -222,3 +222,25 @@ class TestRectangle(unittest.TestCase):
         self.up.update(2, 5, 8, 7, 9)
         res = "[Rectangle] (2) 7/9 - 5/8"
         self.assertEqual(self.up.update(), res)
+
+    def test_kwargs_updates(self):
+        k = Rectangle(10, 10, 10, 10)
+        k.update(height=2)
+        res = "[Rectangle] (1) 10/10 - 10/2"
+        self.assertEqual(k.update(), res)
+
+        k.update(width=2, x=2)
+        res = "[Rectangle] (1) 2/10 - 2/2"
+        self.assertEqual(k.update(), res)
+        
+        k.update(y=3, width=4, x=5, id=45)
+        res = "[Rectangle] (45) 5/3 - 4/2"
+        self.assertEqual(k.update(), res)
+
+        k.update(x=4, height=44, width=2, y=2)
+        res = "[Rectangle] (45) 4/2 - 2/44"
+        self.assertEqual(k.update(), res)
+
+        k.update(width=2, height=9, y=7, x=3, id=66)
+        res = "[Rectangle] (66) 3/7 - 2/9"
+        self.assertEqual(k.update(), res)
