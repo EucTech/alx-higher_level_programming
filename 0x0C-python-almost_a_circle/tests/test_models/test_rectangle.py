@@ -143,37 +143,37 @@ class TestRectangle(unittest.TestCase):
     def test_display(self):
         d = Rectangle(2, 6)
         res = '##\n' * 6
-        with patch('sys.stdout', new = StringIO()) as pout:
+        with patch('sys.stdout', new=StringIO()) as pout:
             d.display()
             self.assertEqual(pout.getvalue(), res)
 
         d = Rectangle(6, 2)
         res = '######\n' * 2
-        with patch('sys.stdout', new = StringIO()) as pout:
+        with patch('sys.stdout', new=StringIO()) as pout:
             d.display()
             self.assertEqual(pout.getvalue(), res)
 
         d = Rectangle(2, 2)
         res = '##\n' * 2
-        with patch('sys.stdout', new = StringIO()) as pout:
+        with patch('sys.stdout', new=StringIO()) as pout:
             d.display()
             self.assertEqual(pout.getvalue(), res)
 
         d = Rectangle(3, 4, 0, 0, 6)
         res = '###\n###\n###\n###\n'
-        with patch('sys.stdout', new = StringIO()) as pout:
+        with patch('sys.stdout', new=StringIO()) as pout:
             d.display()
             self.assertEqual(pout.getvalue(), res)
 
         d = Rectangle(3, 4, 2, 2, 6)
         res = '\n\n  ###\n  ###\n  ###\n  ###\n'
-        with patch('sys.stdout', new = StringIO()) as pout:
+        with patch('sys.stdout', new=StringIO()) as pout:
             d.display()
             self.assertEqual(pout.getvalue(), res)
 
         d = Rectangle(3, 4, 5, 2, 6)
         res = '\n\n     ###\n     ###\n     ###\n     ###\n'
-        with patch('sys.stdout', new = StringIO()) as pout:
+        with patch('sys.stdout', new=StringIO()) as pout:
             d.display()
             self.assertEqual(pout.getvalue(), res)
 
@@ -210,15 +210,15 @@ class TestRectangle(unittest.TestCase):
         self.up.update(2, 5)
         res = "[Rectangle] (2) 10/10 - 5/10"
         self.assertEqual(self.up.update(), res)
-        
+
         self.up.update(2, 5, 8)
         res = "[Rectangle] (2) 10/10 - 5/8"
         self.assertEqual(self.up.update(), res)
-        
+
         self.up.update(2, 5, 8, 7)
         res = "[Rectangle] (2) 7/10 - 5/8"
         self.assertEqual(self.up.update(), res)
-        
+
         self.up.update(2, 5, 8, 7, 9)
         res = "[Rectangle] (2) 7/9 - 5/8"
         self.assertEqual(self.up.update(), res)
@@ -232,7 +232,7 @@ class TestRectangle(unittest.TestCase):
         k.update(width=2, x=2)
         res = "[Rectangle] (1) 2/10 - 2/2"
         self.assertEqual(k.update(), res)
-        
+
         k.update(y=3, width=4, x=5, id=45)
         res = "[Rectangle] (45) 5/3 - 4/2"
         self.assertEqual(k.update(), res)
