@@ -153,6 +153,14 @@ class TestRectangle(unittest.TestCase):
         d = Rectangle(3, 4, 0, 0, 6)
         res = '###\n###\n###\n###'
         self.assertEqual(d.display(), res)
+        
+        d = Rectangle(3, 4, 2, 2, 6)
+        res = '\n\n  ###\n  ###\n  ###\n  ###'
+        self.assertEqual(d.display(), res)
+        
+        d = Rectangle(3, 4, 5, 2, 6)
+        res = '\n\n     ###\n     ###\n     ###\n     ###'
+        self.assertEqual(d.display(), res)
 
     def test__str(self):
         d = Rectangle(4, 6, 2, 1, 12)

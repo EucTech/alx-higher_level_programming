@@ -88,8 +88,10 @@ class Rectangle(Base):
 
     def display(self):
         rec = ""
+        for _ in range(self.y):
+            rec += "\n"
         for i in range(self.__height):
-            rec += "#" * self.__width
+            rec += ' ' * self.x + "#" * self.__width
             if i != self.__height - 1:
                 rec += "\n"
         print(rec, file=sys.stdout)
