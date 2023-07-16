@@ -139,3 +139,43 @@ class TestSquare(unittest.TestCase):
             r = Square(7, 9, -5)
         with self.assertRaises(ValueError):
             r = Square(-17, -29, -9, 0)
+
+    def test_args_update(self):
+        up = Square(10, 10, 10)
+        up.update(2)
+        res = "[Square] (2) 10/10 - 10"
+        self.assertEqual(up.update(), res)
+
+        up.update(2, 5)
+        res = "[Square] (2) 10/10 - 5"
+        self.assertEqual(up.update(), res)
+
+        up.update(4, 5, 8)
+        res = "[Square] (4) 8/10 - 5"
+        self.assertEqual(up.update(), res)
+
+        up.update(6, 5, 8, 7)
+        res = "[Square] (6) 8/7 - 5"
+        self.assertEqual(up.update(), res)
+
+    def test_kwargs_updates(self):
+        k = Square(10, 10, 10)
+        k.update(size=2)
+        res = "[Square] (1) 10/10 - 2"
+        self.assertEqual(k.update(), res)
+
+        k.update(size=2, x=2)
+        res = "[Square] (1) 2/10 - 2"
+        self.assertEqual(k.update(), res)
+
+        k.update(y=3, size=4, x=5, id=45)
+        res = "[Square] (45) 5/3 - 4"
+        self.assertEqual(k.update(), res)
+
+        k.update(x=4, size=44, y=2)
+        res = "[Square] (45) 4/2 - 44"
+        self.assertEqual(k.update(), res)
+
+        k.update(size=2, y=7, x=3, id=66)
+        res = "[Square] (66) 3/7 - 2"
+        self.assertEqual(k.update(), res)

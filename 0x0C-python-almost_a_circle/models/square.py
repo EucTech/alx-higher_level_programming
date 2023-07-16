@@ -24,3 +24,17 @@ class Square(Rectangle):
         """set the value of width and height to same value"""
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """A public method that assigns an argument to each attribute"""
+        attr = ['id', 'size', 'x', 'y']
+        if args:
+            index = 0
+            for i in args:
+                setattr(self, attr[index], i)
+                index += 1
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+        return self.__str__()
+	
