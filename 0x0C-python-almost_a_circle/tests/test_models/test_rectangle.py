@@ -244,3 +244,20 @@ class TestRectangle(unittest.TestCase):
         k.update(width=2, height=9, y=7, x=3, id=66)
         res = "[Rectangle] (66) 3/7 - 2/9"
         self.assertEqual(k.update(), res)
+
+    def test_to_dictionary(self):
+        r1 = Rectangle(10, 2, 1, 9)
+        res = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertEqual(r1.to_dictionary(), res)
+
+        r1 = Rectangle(10, 2)
+        res = {'x': 0, 'y': 0, 'id': 2, 'height': 2, 'width': 10}
+        self.assertEqual(r1.to_dictionary(), res)
+
+        r1 = Rectangle(10, 2, 1, 9, None)
+        res = {'x': 1, 'y': 9, 'id': 3, 'height': 2, 'width': 10}
+        self.assertEqual(r1.to_dictionary(), res)
+
+        r1 = Rectangle(10, 2, 1, 9, 4)
+        res = {'x': 1, 'y': 9, 'id': 4, 'height': 2, 'width': 10}
+        self.assertEqual(r1.to_dictionary(), res)
