@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """The BASE CLASS"""
 import json
+import os.path
+import csv
 
 
 class Base:
@@ -45,10 +47,42 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """
-            that returns the list of the JSON string
+           returns the list of the JSON string
             representation json_string
         """
         if json_string is None:
             return "[]"
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """that returns an instance with all attributes
+            already set
+        """
+        if cls.__name__ == "Rectangle":
+            get_instance = cls(10, 10)
+        elif cls.__name__ == "Square":
+            get_instance = cls(10)
+
+        get_instance.update(**dictionary)
+        return get_instance
+
+    @classmethod
+    def load_from_file(cls):
+        """return list of instances"""
+        filename = cls.__name__ + ".json"
+
+        if os.path.exists(filename) is False:
+            return []
+
+        with open(filename, 'r') as f:
+            string = f.read()
+
+        cls_instance = cls.from_json_string(string)
+        l_instance = []
+
+        for i in range(len(cls_instance)):
+            l_instance.append(cls.create(**cls_instance[i]))
+
+        return l_instance

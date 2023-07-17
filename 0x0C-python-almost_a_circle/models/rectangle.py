@@ -3,6 +3,7 @@
     A rectangle class that inherits from base
 """
 import sys
+import json
 from models.base import Base
 
 
@@ -116,4 +117,5 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """Return the dictionary"""
-        return {'id': self.id, 'width': self.width, 'height': self.height, 'x': self.x, 'y': self.y}
+        return {'id': self.id, 'width': self.width, 'height': self.height,
+                'x': self.x, 'y': self.y}

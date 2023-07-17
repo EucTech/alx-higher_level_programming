@@ -139,4 +139,101 @@ class TestBase(unittest.TestCase):
         ]
         json_list_input = Rectangle.to_json_string(None)
         list_output = Rectangle.from_json_string(json_list_input)
-        self.assertEqual(list_output, []) 
+        self.assertEqual(list_output, [])
+
+    def test_create_rectangle(self):
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        res = '[Rectangle] (1) 1/0 - 3/5'
+        self.assertEqual(r2.update(), res)
+
+    def test_create_square(self):
+        r1 = Square(3)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Square.create(**r1_dictionary)
+        res = '[Square] (1) 0/0 - 3'
+        self.assertEqual(r2.update(), res)
+
+    def test_load_from_file_Rec(self):
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(4, 6)
+        lput = [r1, r2]
+        Rectangle.save_to_file(lput)
+        oput = Rectangle.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_file_Rec1(self):
+        r1 = Rectangle(10, 7, 8)
+        r2 = Rectangle(4, 6)
+        lput = [r1, r2]
+        Rectangle.save_to_file(lput)
+        oput = Rectangle.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_file_Rec2(self):
+        r1 = Rectangle(10, 7)
+        lput = [r1]
+        Rectangle.save_to_file(lput)
+        oput = Rectangle.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_file_Rec3(self):
+        r1 = Rectangle(10, 7, 2)
+        lput = []
+        Rectangle.save_to_file(lput)
+        oput = Rectangle.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_file_Rec4(self):
+        oput = Rectangle.load_from_file()
+        self.assertEqual(oput, [])
+
+    def test_load_from_file_squ(self):
+        r1 = Square(10, 7, 2, 8)
+        r2 = Square(4, 6)
+        lput = [r1, r2]
+        Square.save_to_file(lput)
+        oput = Square.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_file_squ1(self):
+        r1 = Square(10, 7, 2)
+        lput = [r1]
+        Square.save_to_file(lput)
+        oput = Square.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_file_squ2(self):
+        r1 = Square(10)
+        lput = [r1]
+        Square.save_to_file(lput)
+        oput = Square.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_file_squ3(self):
+        r1 = Square(10, 7)
+        lput = []
+        Square.save_to_file(lput)
+        oput = Square.load_from_file()
+
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), [])
+
+    def test_load_from_file_squ4(self):
+        oput = Square.load_from_file()
+        self.assertEqual(oput, [])

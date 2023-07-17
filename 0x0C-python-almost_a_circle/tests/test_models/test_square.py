@@ -45,7 +45,7 @@ class TestSquare(unittest.TestCase):
 
     def test_square_display_size_x(self):
         s = Square(3, 2)
-        res = '  ###\n  ###\n  ###\n' 
+        res = '  ###\n  ###\n  ###\n'
         with patch('sys.stdout', new=StringIO()) as pout:
             s.display()
             self.assertEqual(pout.getvalue(), res)
@@ -179,3 +179,20 @@ class TestSquare(unittest.TestCase):
         k.update(size=2, y=7, x=3, id=66)
         res = "[Square] (66) 3/7 - 2"
         self.assertEqual(k.update(), res)
+
+    def test_to_dictionary(self):
+        r1 = Square(10, 2, 1, 9)
+        res = {'x': 2, 'y': 1, 'id': 9, 'size': 10}
+        self.assertEqual(r1.to_dictionary(), res)
+
+        r1 = Square(10, 2)
+        res = {'x': 2, 'y': 0, 'id': 1, 'size': 10}
+        self.assertEqual(r1.to_dictionary(), res)
+
+        r1 = Square(44, 7, 9, None)
+        res = {'x': 7, 'y': 9, 'id': 2, 'size': 44}
+        self.assertEqual(r1.to_dictionary(), res)
+
+        r1 = Square(10, 3, 1, 9)
+        res = {'x': 3, 'y': 1, 'id': 9, 'size': 10}
+        self.assertEqual(r1.to_dictionary(), res)
