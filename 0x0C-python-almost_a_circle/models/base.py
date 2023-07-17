@@ -86,3 +86,62 @@ class Base:
             l_instance.append(cls.create(**cls_instance[i]))
 
         return l_instance
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """save file in csv"""
+        filename = cls.__name__ + ".csv"
+
+        if cls.__name__ == "Rectangle":
+            ld = [0, 0, 0, 0, 0]
+            lk = ['id', 'width', 'height', 'x', 'y']
+        elif cls.__name__ == "Square":
+            ld = ['0', '0', '0', '0']
+            lk = ['id', 'size', 'x', 'y']
+
+        llist = []
+
+        if list_objs is None:
+            with open(filename, 'w', newline="") as f:
+                csv.writer("[]")
+        elif list_objs is not None:
+            for ob in list_objs:
+                for x in range(len(lk)):
+                    ld[x] = ob.to_dictionary()[lk[x]]
+                llist.append(ld[:])
+
+        with open(filename, "w") as f:
+            c_file = csv.writer(f)
+            c_file.writerows(llist)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """To load file csv"""
+        filename = cls.__name__ + ".csv"
+
+        if os.path.exists(filename) is False:
+            return []
+
+        with open(filename, 'r') as f:
+            r_file = csv.reader(f)
+            c_list = list(r_file)
+
+        if cls.__name__ == "Rectangle":
+            lk = ['id', 'width', 'height', 'x', 'y']
+        elif cls.__name__ == "Square":
+            lk = ['id', 'size', 'x', 'y']
+
+        llist = []
+
+        for i in c_list:
+            dc = {}
+            for x in enumerate(i):
+                dc[lk[x[0]]] = int(x[1])
+            llist.append(dc)
+
+        l_ins = []
+
+        for k in range(len(llist)):
+            l_ins.append(cls.create(**llist[k]))
+
+        return l_ins

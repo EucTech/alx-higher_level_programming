@@ -237,3 +237,67 @@ class TestBase(unittest.TestCase):
     def test_load_from_file_squ4(self):
         oput = Square.load_from_file()
         self.assertEqual(oput, [])
+
+    def test_load_from_csv_squ1(self):
+        r1 = Square(10, 7, 8, 9)
+        lput = [r1]
+        Square.save_to_file_csv(lput)
+        oput = Square.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_csv_squ2(self):
+        r1 = Square(2, 4, 6)
+        lput = [r1]
+        Square.save_to_file_csv(lput)
+        oput = Square.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), lput[x].__str__())
+
+    def test_load_from_csv_squ3(self):
+        r1 = Square(5, 9)
+        lput = [r1]
+        Square.save_to_file_csv(lput)
+        oput = Square.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), lput[x].__str__())
+
+    def test_load_from_csv_squ4(self):
+        r1 = Square(5, 7)
+        lput = []
+        Square.save_to_file_csv(lput)
+        oput = Square.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), [])
+
+    def test_load_from_csv_rec1(self):
+        r1 = Rectangle(10, 7, 9, 8, 9)
+        lput = [r1]
+        Rectangle.save_to_file_csv(lput)
+        oput = Rectangle.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), oput[x].__str__())
+
+    def test_load_from_csv_rec2(self):
+        r1 = Rectangle(2, 4, 6, 7)
+        lput = [r1]
+        Rectangle.save_to_file_csv(lput)
+        oput = Rectangle.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), lput[x].__str__())
+
+    def test_load_from_csv_rec3(self):
+        r1 = Rectangle(5, 9, 4)
+        lput = [r1]
+        Rectangle.save_to_file_csv(lput)
+        oput = Rectangle.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), lput[x].__str__())
+
+    def test_load_from_csv_rec4(self):
+        r1 = Rectangle(5, 7)
+        lput = []
+        Rectangle.save_to_file_csv(lput)
+        oput = Rectangle.load_from_file_csv()
+        for x in range(len(lput)):
+            self.assertEqual(lput[x].__str__(), [])
