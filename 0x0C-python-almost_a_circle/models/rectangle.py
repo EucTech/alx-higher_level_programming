@@ -10,31 +10,11 @@ from models.base import Base
 class Rectangle(Base):
     """Rectangle class"""
     def __init__(self, width, height, x=0, y=0, id=None):
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super().__init__(id)
-
-        if type(width) is not int:
-            raise TypeError("width must be an integer")
-        elif width <= 0:
-            raise ValueError("width must be > 0")
-
-        if type(height) is not int:
-            raise TypeError("height must be an integer")
-        elif height <= 0:
-            raise ValueError("height must be > 0")
-
-        if type(x) is not int:
-            raise TypeError("x must be an integer")
-        elif x < 0:
-            raise ValueError("x must be >= 0")
-
-        if type(y) is not int:
-            raise TypeError("y must be an integer")
-        elif y < 0:
-            raise ValueError("y must be >= 0")
 
     @property
     def width(self):
@@ -85,9 +65,11 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
+        """Area of a rectangle"""
         return self.__width * self.__height
 
     def display(self):
+        """To display"""
         rec = ""
         for _ in range(self.y):
             rec += "\n"
@@ -99,6 +81,7 @@ class Rectangle(Base):
         return rec
 
     def __str__(self):
+        """string repr"""
         return f"[Rectangle] ({self.id}) \
 {self.__x}/{self.__y} - {self.__width}/{self.__height}"
 
