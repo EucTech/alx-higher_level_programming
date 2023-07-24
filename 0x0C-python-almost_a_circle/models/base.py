@@ -3,6 +3,7 @@
 import json
 import os.path
 import csv
+import turtle
 
 
 class Base:
@@ -145,3 +146,16 @@ class Base:
             l_ins.append(cls.create(**llist[k]))
 
         return l_ins
+
+    def draw(list_rectangles, list_squares):
+        """To draw the shape of the rectangles
+            and squar
+        """
+        shape = turtle.Turtle()
+
+        for i in range(4):
+            list_rectangle.forward(self.width)
+            list_rectanglt.forward(self.heght)
+
+
+        turtle.done()
