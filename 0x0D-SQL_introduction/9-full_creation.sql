@@ -1,4 +1,5 @@
 -- a script that creates a table second_table
+-- insert values to it
 
 CREATE TABLE IF NOT EXISTS second_table (
 	id INT,
@@ -6,8 +7,7 @@ CREATE TABLE IF NOT EXISTS second_table (
 	score INT
 );
 
-INSERT INTO second_table (id, name, score)
-VALUES 
+INSERT INTO second_table VALUES 
 	(1, "John", 10),
 	(2, "Alex", 3),
 	(3, "Bod", 14),
