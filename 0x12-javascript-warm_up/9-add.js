@@ -6,5 +6,5 @@ const secArg = Number(process.argv[3]);
 add(firstArg, secArg);
 
 function add (a, b) {
-	console.log(a + b);
+  console.log(a + b);
 }
