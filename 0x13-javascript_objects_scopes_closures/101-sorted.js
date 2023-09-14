@@ -9,8 +9,8 @@ for (const key in dict) {
   if (sortObj[value]) {
     sortObj[value].push(key);
   } else {
-      sortObj[value] = [key];
-    }
+    sortObj[value] = [key];
+  }
 }
 
 console.log(sortObj);
