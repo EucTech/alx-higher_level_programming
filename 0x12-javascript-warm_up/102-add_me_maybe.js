@@ -1,5 +1,5 @@
 #!/usr/bin/node
-addMeMaybe function (number, theFunction) {
+function addMeMaybe (number, theFunction) {
   number += 1;
   theFunction(number);
 };
