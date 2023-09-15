@@ -25,9 +25,9 @@ if __name__ == "__main__":
 
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
-    result = cursor.fetchall()
+    states = cursor.fetchall()
 
-    for row in result:
+    for row in states:
         print(row)
 
     cursor.close()
