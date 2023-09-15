@@ -8,7 +8,7 @@ import MySQLdb
 if __name__ == "__main__":
     conn = MySQLdb.connect(
         host="localhost",
-        port= 3306,
+        port=3306,
         user="root",
         password="euctech",
         db="hbtn_0e_0_usa"
