@@ -3,6 +3,7 @@
     a script that lists all states from the database hbtn_0e_0_usa
 """
 
+
 import MySQLdb
 import sys
 
@@ -14,10 +15,9 @@ if __name__ == "__main__":
     conn = MySQLdb.connect(host="localhost", user=username, passwd=pwd,
                            db=db_name, port=3306)
 
-    # cursor for excuting queries
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+    cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
     states = cursor.fetchall()
 
