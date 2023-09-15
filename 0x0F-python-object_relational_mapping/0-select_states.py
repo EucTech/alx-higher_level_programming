@@ -12,7 +12,7 @@ if __name__ == "__main__":
     pwd = sys.argv[2]
     db_name = sys.argv[3]
 
-    conn = MySQLdb.connect(host="localhost", user=username, passwd=pwd,
+    conn = MySQLdb.connect(user=username, passwd=pwd,
                            db=db_name, port=3306)
 
     cursor = conn.cursor()
