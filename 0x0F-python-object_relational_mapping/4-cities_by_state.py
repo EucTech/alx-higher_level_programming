@@ -15,12 +15,17 @@ if __name__ == "__main__":
 
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM cities ORDER BY id ASC;")
+    cursor.execute("""
+    SELECT cities.id, cities.name, states.name
+    FROM cities
+    INNER JOIN states ON cities.state_id = states.id
+    ORDER BY cities.id ASC;
+    """)
 
-    states = cursor.fetchall()
+    cities = cursor.fetchall()
 
-    for row in states:
-        print(row)
+    for city in cities:
+        print(city)
 
     cursor.close()
     conn.close()
