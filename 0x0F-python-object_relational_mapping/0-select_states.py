@@ -23,7 +23,8 @@ if __name__ == "__main__":
     # cursor for excuting queries
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
+    cursor.execute("SELECT * FROM states")
+    
     result = cursor.fetchall()
 
     for row in result:
