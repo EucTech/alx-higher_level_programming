@@ -24,6 +24,4 @@ if __name__ == '__main__':
     for state, city in cities:
         print("{}: ({}) {}".format(state.name, city.id, city.name))
 
-    session.commit()
-
     session.close()
