@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """a script that prints all the city objects"""
 
+
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -17,11 +18,12 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    cities = session.query(City, State).\
+    cities = session.query(State, City).\
         filter(State.id == City.state_id).order_by(City.id).all()
 
-    for city, state in cities:
+    for state, city in cities:
         print("{}: ({}) {}".format(state.name, city.id, city.name))
 
     session.commit()
+
     session.close()
