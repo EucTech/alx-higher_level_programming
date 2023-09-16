@@ -18,9 +18,10 @@ if __name__ == '__main__':
     session = Session()
 
     cities = session.query(City, State).\
-        filter(State.id == City.state_id).all()
+        filter(State.id == City.state_id).order_by(City.id).all()
 
     for city, state in cities:
         print("{}: ({}) {}".format(state.name, city.id, city.name))
 
+    session.commit()
     session.close()
