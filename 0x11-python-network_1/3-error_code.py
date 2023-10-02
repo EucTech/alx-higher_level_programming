@@ -12,7 +12,7 @@ if __name__ == "__main__":
     request = Request(url)
     try:
         with urlopen(request) as response:
-            content  = response.read().decode('utf-8')
+            content = response.read().decode('utf-8')
             print(content)
     except HTTPError as e:
-        print(f"Error code: ", e.code)
+        print(f"Error code:", e.code)
