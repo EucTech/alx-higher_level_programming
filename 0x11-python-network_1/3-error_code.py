@@ -8,8 +8,11 @@ from urllib.error import HTTPError
 
 
 if __name__ == "__main__":
-    request = Request(sys.argv[1])
+    url = sys.argv[1]
+    request = Request(url)
     try:
-        response = urlopen(request)
+        with urlopen(request) as response:
+            content  = response.read().decode('utf-8')
+            print(content)
     except HTTPError as e:
-        print("Error code: ", e.code)
+        print(f"Error code: ", e.code)
