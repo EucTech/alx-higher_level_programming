@@ -7,7 +7,5 @@ const text = process.argv[3];
 fs.writeFile(filename, text, 'utf8', (error) => {
   if (error) {
     console.log(error);
-  } else {
-    console.log(filename);
   }
 });
